@@ -8,7 +8,7 @@ import {
 
 const defaultState = {
     letters: {},
-    guess: '',
+    guess: [],
     score: 0,
     rank: 'Beginner',
     words: {},
@@ -27,7 +27,11 @@ export const gameReducer = (state = defaultState, action) => {
             };
         case ADD_LETTER:
             return {
-                ...state
+                ...state,
+                guess: [
+                    ...state.guess,
+                    action.letter,
+                ]
             };
         case DELETE_LETTER:
             return {
