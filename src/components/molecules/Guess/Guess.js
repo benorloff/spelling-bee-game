@@ -6,8 +6,8 @@ import useKeyPress from '../../../hooks/useKeyPress';
 export default function Guess() {
 
   return (
-    <div>
-        <h1>This is the Guess component.</h1>
+    <div style={{border: '1px solid yellow'}}>
+        <p>Guess</p>
     </div>
   );
 }

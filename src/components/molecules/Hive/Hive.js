@@ -9,7 +9,7 @@ export default function Hive() {
   console.log(letters, '<-- letters in Hive');
 
   return (
-    <div style={{border: '1px solid yellow'}}>
+    <div style={{border: '1px solid yellow', padding: 20}}>
         <p>Hive</p>
         {Object.keys(letters).map((key,i) => {
           return (

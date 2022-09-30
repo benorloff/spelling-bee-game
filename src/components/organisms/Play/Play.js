@@ -6,8 +6,8 @@ import Buttons from '../../molecules/Buttons';
 
 export default function Play() {
     return (
-        <div>
-            <h1>This is the Play component.</h1>
+        <div style={{border: '1px solid green', padding: 20}}>
+            <p>Play component</p>
             <Guess></Guess>
             <Hive></Hive>
             <Buttons></Buttons>

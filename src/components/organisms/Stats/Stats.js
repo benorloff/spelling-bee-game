@@ -5,8 +5,8 @@ import Words from '../../molecules/Words';
 
 export default function Play() {
     return (
-        <div>
-            <h1>This is the Stats component.</h1>
+        <div style={{border: '1px solid green', padding: 20}}>
+            <p>Stats component</p>
             <Progress />
             <Words />
         </div>

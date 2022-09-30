@@ -3,8 +3,8 @@ import React from 'react';
 export default function Progress() {
 
   return (
-    <div>
-        <h1>This is the Progress component.</h1>
+    <div style={{border: '1px solid yellow', padding: 20}}>
+        <p>Progress</p>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { Autorenew } from '@mui/icons-material';
 export default function Buttons() {
 
   return (
-    <div style={{border: '1px solid yellow'}}>
+    <div style={{border: '1px solid yellow', padding: 20}}>
         <p>Buttons</p>
         <Stack direction="row" spacing={2} justifyContent="center">
             <Button variant="outlined">Delete</Button>
