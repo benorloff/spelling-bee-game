@@ -34,10 +34,9 @@ export const gameReducer = (state = defaultState, action) => {
                 ]
             };
         case DELETE_LETTER:
-            console.log('DELETE_LETTER reducer hit');
             return {
                 ...state,
-                guess: state.guess.splice(-1,1),
+                guess: state.guess.slice(0,-1),
             };
         case SUBMIT_GUESS:
             return {
