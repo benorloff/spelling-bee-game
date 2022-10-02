@@ -1,5 +1,6 @@
 import { 
-    SET_LETTERS, 
+    SET_LETTERS,
+    SET_VALID_WORDS,
     SHUFFLE_LETTERS, 
     ADD_LETTER, 
     DELETE_LETTER, 
@@ -21,6 +22,11 @@ export const gameReducer = (state = defaultState, action) => {
                 ...state,
                 letters: action.letters,
             };
+        case SET_VALID_WORDS:
+            return {
+                ...state,
+                words: action.words,
+            }
         case SHUFFLE_LETTERS:
             return {
                 ...state

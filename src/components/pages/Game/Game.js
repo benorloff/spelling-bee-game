@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import generateLetters from '../../../utils/generateLetters';
-import { setLetters } from '../../../store/actions/gameActions';
+import useWordGenerator from '../../../hooks/useWordGenerator';
+import { setLetters, setValidWords } from '../../../store/actions/gameActions';
 
 import { Container, Grid } from '@mui/material';
 
@@ -14,6 +15,7 @@ export default function Game() {
 
   useEffect(() => {
     dispatch(setLetters(generateLetters()));
+    dispatch(setValidWords(useWordGenerator));
   },[dispatch])
 
   return (
