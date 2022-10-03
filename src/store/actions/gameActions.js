@@ -4,6 +4,7 @@ export const SHUFFLE_LETTERS = 'SHUFFLE_LETTERS';
 export const ADD_LETTER = 'ADD_LETTER';
 export const DELETE_LETTER = 'DELETE_LETTER';
 export const SUBMIT_GUESS = 'SUBMIT_GUESS';
+export const CLEAR_GUESS = 'CLEAR_GUESS';
 
 export const setLetters = letters => ({
     type: SET_LETTERS,
@@ -33,3 +34,7 @@ export const submitGuess = guess => ({
     type: SUBMIT_GUESS,
     guess
 });
+
+export const clearGuess = () => ({
+    type: CLEAR_GUESS,
+})

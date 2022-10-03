@@ -28,7 +28,17 @@ export default function Game() {
           Object.keys(data).forEach(word => {
             const wordArr = word.split('');
             if ( (wordArr.every((letter) => lettersArr.includes(letter))) && (wordArr.includes(primaryLetter)) ) {
-                words[word] = '';
+              if ( lettersArr.every((letter) => wordArr.includes(letter))) {
+                words[word] = {
+                  isPangram: true,
+                  isFound: false,
+                }
+              } else {
+                words[word] = {
+                  isPangram: false,
+                  isFound: false,
+                }
+              }
             }
           })
         })

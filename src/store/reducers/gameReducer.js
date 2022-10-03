@@ -47,7 +47,14 @@ export const gameReducer = (state = defaultState, action) => {
             };
         case SUBMIT_GUESS:
             return {
-                ...state
+                ...state,
+                words: {
+                    ...state.words,
+                    [action.guess]:  {
+                        ...state.words[action.guess],
+                        isFound: true,
+                    }
+                }
             };
         default:
             return state;

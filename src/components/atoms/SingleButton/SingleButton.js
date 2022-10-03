@@ -13,6 +13,7 @@ export default function SingleButton({action}) {
   const dispatch = useDispatch();
   const guess = useSelector(state => state.guess);
   const letters = useSelector(state => state.letters);
+  const words = useSelector(state => state.words);
 
   // let key = action === 'Shuffle' ? 'Space' : action;
   // const handler = action => {
@@ -37,7 +38,12 @@ export default function SingleButton({action}) {
   };
 
   const handleEnter = () => {
-    dispatch(submitGuess(guess));
+    if ( words[guess.join('')] ) {
+      dispatch(submitGuess(guess.join('')))
+        .then(guess = [])
+    } else {
+      console.log('Not in word list');
+    }
     console.log('handle enter HIT')
   };
 
