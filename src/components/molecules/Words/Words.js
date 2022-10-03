@@ -9,9 +9,9 @@ export default function Words() {
     <div style={{border: '1px solid yellow', padding: 20}}>
         <p>Words</p>
         {Object.keys(words).map(word => {
-          if ( words[word].isFound === true ) {
+          if ( words[word].isFound ) {
             return (
-              <span>{word}</span>
+              <div style={{fontWeight: words[word].isPangram ? 'bold' : ''}}>{word}</div>
             )
           }
         })}
