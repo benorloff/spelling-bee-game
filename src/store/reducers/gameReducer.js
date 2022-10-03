@@ -29,7 +29,8 @@ export const gameReducer = (state = defaultState, action) => {
             }
         case SHUFFLE_LETTERS:
             return {
-                ...state
+                ...state,
+                letters: action.letters,
             };
         case ADD_LETTER:
             return {

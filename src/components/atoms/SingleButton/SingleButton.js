@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteLetter, shuffleLetters, submitGuess } from '../../../store/actions/gameActions';
 
 import useKeyPress from '../../../hooks/useKeyPress';
+import randomizeLetters from '../../../utils/randomizeLetters';
 
 import { Button } from '@mui/material';
 import { Autorenew } from '@mui/icons-material';
@@ -11,6 +12,7 @@ export default function SingleButton({action}) {
 
   const dispatch = useDispatch();
   const guess = useSelector(state => state.guess);
+  const letters = useSelector(state => state.letters);
 
   // let key = action === 'Shuffle' ? 'Space' : action;
   // const handler = action => {
@@ -30,7 +32,7 @@ export default function SingleButton({action}) {
   };
 
   const handleShuffle = () => {
-    dispatch(shuffleLetters());
+    dispatch(shuffleLetters(randomizeLetters(letters)));
     console.log('handle shuffle HIT')
   };
 
