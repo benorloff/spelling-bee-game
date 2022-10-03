@@ -25,12 +25,12 @@ export default function Game() {
     fetch('en.json')
         .then((response) => response.json())
         .then((data) => {
-            Object.keys(data).forEach(word => {
-              const wordArr = word.split('');
-              if ( (wordArr.every((letter) => lettersArr.includes(letter))) && (wordArr.includes(primaryLetter)) ) {
-                  words[word] = '';
-              }
-            })
+          Object.keys(data).forEach(word => {
+            const wordArr = word.split('');
+            if ( (wordArr.every((letter) => lettersArr.includes(letter))) && (wordArr.includes(primaryLetter)) ) {
+                words[word] = '';
+            }
+          })
         })
         .catch((error) => console.log(error));
 

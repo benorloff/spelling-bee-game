@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteLetter, shuffleLetters, submitGuess } from '../../../store/actions/gameActions';
+import SingleButton from '../../atoms/SingleButton';
 
 import useKeyPress from '../../../hooks/useKeyPress';
 
@@ -32,13 +33,34 @@ export default function Buttons() {
     console.log('handleEnter hit')
   };
 
-  useKeyPress('Delete', handleDelete);
+  function useKeyPress(key, callback, active = true) {
+    useEffect(() => {
+      const keypress = e => {
+        if (e.key === key) {
+          callback();
+        }
+      };
+  
+      if (active) {
+        window.addEventListener('keypress', keypress);
+      }
+  
+      return () => {
+        if (active) {
+          window.removeEventListener('keypress', keypress);
+        }
+      };
+    }, [key, callback, active]);
+  }
 
   return (
     <div style={{border: '1px solid yellow', padding: 20}}>
         <p>Buttons</p>
         <Stack direction="row" spacing={2} justifyContent="center">
-            <Button 
+          <SingleButton action="Delete" />
+          <SingleButton action="Shuffle" />
+          <SingleButton action="Enter" />
+            {/* <Button 
               variant="outlined"
               onClick={handleDelete}
               disabled={disableDelete}
@@ -57,7 +79,7 @@ export default function Buttons() {
               onClick={handleEnter}
             >
               Enter
-            </Button>
+            </Button> */}
         </Stack>
     </div>
   );
