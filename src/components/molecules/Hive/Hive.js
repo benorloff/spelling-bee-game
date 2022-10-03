@@ -6,7 +6,6 @@ import HiveCell from '../../atoms/HiveCell/HiveCell';
 export default function Hive() {
 
   const letters = useSelector(state => state.letters);
-  console.log(letters, '<-- letters in Hive');
 
   return (
     <div style={{border: '1px solid yellow', padding: 20}}>
