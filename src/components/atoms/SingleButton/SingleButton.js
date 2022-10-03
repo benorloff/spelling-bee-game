@@ -11,9 +11,18 @@ export default function SingleButton({action}) {
 
   const dispatch = useDispatch();
   const guess = useSelector(state => state.guess);
-  // Only shuffle needs to be renamed since Delete and Enter are valid key names
-  const keyName = action === "Shuffle" ? 'Space' : action;
-  const handler = `handle${action}`;
+
+  // let key = action === 'Shuffle' ? 'Space' : action;
+  // const handler = action => {
+  //   switch (action) {
+  //     case ('Delete'): 
+  //       return handleDelete;
+  //     case ('Shuffle'): 
+  //       return handleShuffle;
+  //     case ('Enter'):
+  //       return handleEnter;
+  //   }
+  // };
 
   const handleDelete = () => {
     dispatch(deleteLetter());
@@ -30,7 +39,8 @@ export default function SingleButton({action}) {
     console.log('handle enter HIT')
   };
 
-  useKeyPress(keyName, handler);
+  // ENABLE KEY PRESSES FOR BUTTONS
+  // useKeyPress(key, handler);
 
   return (
     <Button 
