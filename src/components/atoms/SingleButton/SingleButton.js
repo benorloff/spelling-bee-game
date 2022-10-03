@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteLetter, shuffleLetters, submitGuess } from '../../../store/actions/gameActions';
+import { deleteLetter, shuffleLetters, submitGuess, clearGuess } from '../../../store/actions/gameActions';
 
 import useKeyPress from '../../../hooks/useKeyPress';
 import randomizeLetters from '../../../utils/randomizeLetters';
@@ -40,7 +40,9 @@ export default function SingleButton({action}) {
   const handleEnter = () => {
     if ( words[guess.join('')] ) {
       dispatch(submitGuess(guess.join('')))
-        .then(guess = [])
+        .then(
+          dispatch(clearGuess())
+        )
     } else {
       console.log('Not in word list');
     }

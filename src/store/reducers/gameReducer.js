@@ -4,7 +4,8 @@ import {
     SHUFFLE_LETTERS, 
     ADD_LETTER, 
     DELETE_LETTER, 
-    SUBMIT_GUESS 
+    SUBMIT_GUESS,
+    CLEAR_GUESS,
 } from "../actions/gameActions";
 
 const defaultState = {
@@ -56,6 +57,11 @@ export const gameReducer = (state = defaultState, action) => {
                     }
                 }
             };
+        case CLEAR_GUESS:
+            return {
+                ...state,
+                guess: [],
+            }
         default:
             return state;
     }
