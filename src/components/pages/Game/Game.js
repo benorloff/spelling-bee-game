@@ -56,10 +56,10 @@ export default function Game() {
         spacing={2}
         alignItems="center"
       >
-        <Grid item xs={6} textAlign='center' >
+        <Grid item xs={12} md={6} order={{ xs: 2, md: 1}} textAlign='center' >
           <Play />
         </Grid>
-        <Grid item xs={6} textAlign='center' >
+        <Grid item xs={12} md={6} order={{ xs: 1, md: 2}} textAlign='center' >
           <Stats />
         </Grid>
       </Grid>
