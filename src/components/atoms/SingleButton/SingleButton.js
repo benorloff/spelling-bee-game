@@ -40,9 +40,7 @@ export default function SingleButton({action}) {
   const handleEnter = () => {
     if ( words[guess.join('')] ) {
       dispatch(submitGuess(guess.join('')))
-        .then(
-          dispatch(clearGuess())
-        )
+      dispatch(clearGuess())
     } else {
       console.log('Not in word list');
     }

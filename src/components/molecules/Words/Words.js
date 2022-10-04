@@ -8,10 +8,10 @@ export default function Words() {
   return (
     <div style={{border: '1px solid yellow', padding: 20}}>
         <p>Words</p>
-        {Object.keys(words).map(word => {
+        {Object.keys(words).map((word,i) => {
           if ( words[word].isFound ) {
             return (
-              <div style={{fontWeight: words[word].isPangram ? 'bold' : ''}}>{word}</div>
+              <div key={i} style={{fontWeight: words[word].isPangram ? 'bold' : ''}}>{word}</div>
             )
           }
         })}
