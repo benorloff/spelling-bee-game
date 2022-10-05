@@ -6,6 +6,8 @@ import {
     DELETE_LETTER, 
     SUBMIT_GUESS,
     CLEAR_GUESS,
+    SET_MAX_SCORE,
+    UPDATE_SCORE,
 } from "../actions/gameActions";
 
 const ranks = [
@@ -76,6 +78,22 @@ export const gameReducer = (state = defaultState, action) => {
             return {
                 ...state,
                 guess: [],
+            };
+        case SET_MAX_SCORE:
+            return {
+                ...state,
+                score: {
+                    ...state.score,
+                    max: action.maxScore,
+                }
+            };
+        case UPDATE_SCORE:
+            return {
+                ...state,
+                score: {
+                    ...state.score,
+                    current: state.score.current + action.points,
+                }
             }
         default:
             return state;

@@ -5,8 +5,8 @@ export const ADD_LETTER = 'ADD_LETTER';
 export const DELETE_LETTER = 'DELETE_LETTER';
 export const SUBMIT_GUESS = 'SUBMIT_GUESS';
 export const CLEAR_GUESS = 'CLEAR_GUESS';
-export const SET_MAX_POINTS = 'SET_MAX_POINTS';
-export const UPDATE_CURRENT_POINTS = 'UPDATE_CURRENT_POINTS';
+export const SET_MAX_SCORE = 'SET_MAX_SCORE';
+export const UPDATE_SCORE = 'UPDATE_SCORE';
 
 export const setLetters = letters => ({
     type: SET_LETTERS,
@@ -41,10 +41,12 @@ export const clearGuess = () => ({
     type: CLEAR_GUESS,
 });
 
-export const setMaxPoints = () => ({
-    type: SET_MAX_POINTS,
+export const setMaxScore = maxScore => ({
+    type: SET_MAX_SCORE,
+    maxScore,
 });
 
-export const updateCurrentPoints = () => ({
-    type: UPDATE_CURRENT_POINTS,
+export const updateScore = points => ({
+    type: UPDATE_SCORE,
+    points,
 });
