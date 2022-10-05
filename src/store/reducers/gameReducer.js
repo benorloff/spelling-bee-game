@@ -8,10 +8,25 @@ import {
     CLEAR_GUESS,
 } from "../actions/gameActions";
 
+const ranks = [
+    'Beginner',
+    'Good Start',
+    'Moving Up',
+    'Good',
+    'Solid',
+    'Nice',
+    'Great',
+    'Amazing',
+    'Genius',
+];
+
 const defaultState = {
     letters: {},
     guess: [],
-    score: 0,
+    score: {
+        current: 0,
+        max: 0,
+    },
     rank: 'Beginner',
     words: {},
 };
