@@ -28,7 +28,7 @@ export default function SingleButton({action}) {
   // };
 
   const handleDelete = () => {
-    dispatch(deleteLetter());
+    dispatch(deleteLetter(guess.length - 1));
     console.log('handle delete HIT')
   };
 
@@ -38,7 +38,7 @@ export default function SingleButton({action}) {
   };
 
   const handleEnter = () => {
-    if ( words[guess.join('')] ) {
+    if ( words['list'][guess.join('')] ) {
       dispatch(submitGuess(guess.join('')))
       dispatch(clearGuess())
     } else {

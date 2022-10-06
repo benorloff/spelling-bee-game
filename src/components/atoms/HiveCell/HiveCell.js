@@ -11,7 +11,7 @@ export default function HiveCell({ letter, type }) {
   const dispatch = useDispatch();
 
   const handleLetterClick = () => {
-    dispatch(addLetter(letter));
+    dispatch(addLetter([letter]));
   }
 
   useKeyPress(letter, handleLetterClick);

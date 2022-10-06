@@ -1,3 +1,5 @@
+import update from 'immutability-helper';
+
 import { 
     SET_LETTERS,
     SET_VALID_WORDS,
@@ -36,41 +38,45 @@ const defaultState = {
 export const gameReducer = (state = defaultState, action) => {
     switch (action.type) {
         case SET_LETTERS:
-            return {
-                ...state,
-                letters: action.letters,
-            };
+            return update(state, {
+                letters: { $set: action.letters },
+            });
         case SET_VALID_WORDS:
-            return {
-                ...state,
-                ...action.payload
-            }
+            return update(state, { $merge: action.payload })
         case SHUFFLE_LETTERS:
-            return {
-                ...state,
-                letters: action.letters,
-            };
+            return update(state, {
+                letters: { $set: action.letters },
+            });
         case ADD_LETTER:
-            return {
-                ...state,
-                guess: [
-                    ...state.guess,
-                    action.letter,
-                ]
-            };
+            return update(state, {
+                guess: { $push: action.letter }
+            });
         case DELETE_LETTER:
-            return {
-                ...state,
-                guess: state.guess.slice(0,-1),
-            };
+            return update(state, {
+                guess: { $splice: [[action.index,1]] }
+            });
         case SUBMIT_GUESS:
+            // return update(state, {
+            //     words: words =>
+            //         update(words || {}, {
+            //             list: list =>
+            //                 update(list || {}, {
+            //                     [action.guess]: actionGuess =>
+            //                         update(action.guess || {}, {
+            //                             isFound: isFound => update(isFound || false, { $set: !isFound })
+            //                         })
+            //                 })
+            //         })
+            // });
             return {
                 ...state,
                 words: {
                     ...state.words,
-                    [action.guess]:  {
-                        ...state.words[action.guess],
-                        isFound: true,
+                    list: {
+                        [action.guess]:  {
+                            ...state.words[action.guess],
+                            isFound: true,
+                        }
                     }
                 }
             };

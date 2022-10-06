@@ -28,8 +28,9 @@ export const addLetter = letter => ({
     letter,
 });
 
-export const deleteLetter = () => ({
+export const deleteLetter = index => ({
     type: DELETE_LETTER,
+    index,
 });
 
 export const submitGuess = guess => ({
