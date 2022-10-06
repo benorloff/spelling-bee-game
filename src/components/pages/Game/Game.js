@@ -77,7 +77,7 @@ export default function Game() {
   // console.log(state, 'this is state from Game component');
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="lg">
       <h1>This is the Game component.</h1>
       <Grid 
         container 

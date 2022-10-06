@@ -12,9 +12,49 @@ code {
     monospace;
 }
 
-.progressCircle {
-  height: 10px;
+.progress {
+  padding: 6px 12px 6px 0;
+  cursor: pointer;
+  align-items: center;
+}
+
+.progress-rank {
+  align-items: center;
+}
+
+.progress-bar {
+  margin-left: 12px;
+  position: relative;
+  align-items: center;
+}
+
+.progress-line {
+  position: relative;
+  height: 1px;
+  background: #dcdcdc;
+  width: 100%;
+  align-items: center;
+}
+
+.progress-dots {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.progress-dot {
+  display: block;
+  width: 0;
+  position: relative;
+}
+
+.progress-dot::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -5px;
+  top: -5px;
   width: 10px;
-  background-color: yellow;
+  height: 10px;
   border-radius: 50%;
+  transition: background-color 200ms 100ms ease;
 }

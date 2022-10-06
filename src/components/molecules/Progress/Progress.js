@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { Grid } from '@mui/material';
 
-import ProgressCircle from '../../atoms/ProgressCircle';
+import ProgressDot from '../../atoms/ProgressDot';
 
 export default function Progress() {
 
@@ -16,56 +16,23 @@ export default function Progress() {
     <div style={{border: '1px solid yellow', padding: 20}}>
         <p>Progress</p>
         <div>
-          <Grid container direction="row" columns={10} justifyContent="center" >
-            <Grid item xs={2}>
-              {rank}
+          {/* Progress */}
+          <Grid container columns={10} className="progress">
+            {/* Progress Rank */}
+            <Grid item xs={2} className="progress-rank" >
+              <h4>{rank}</h4>
             </Grid>
-            <Grid container item xs spacing={0} justifyContent="space-between" alignItems="center">
-              <Grid container direction="row" item xs justifyContent="space-between" alignItems="center" style={{ position: 'relative' }} >
-                <ProgressCircle location={'left'}></ProgressCircle>
-                <div style={{ height: 1, width: '100%', backgroundColor: 'yellow', position: 'absolute'}}></div>
-                <ProgressCircle location={'right'}></ProgressCircle>
-              </Grid>
-              <Grid container direction="row" item xs justifyContent="space-between" alignItems="center" style={{ position: 'relative' }} >
-                <ProgressCircle location={'left'}></ProgressCircle>
-                <div style={{ height: 1, width: '100%', backgroundColor: 'yellow', position: 'absolute'}}></div>
-                <ProgressCircle location={'right'}></ProgressCircle>
-              </Grid>
-              <Grid container direction="row" item xs justifyContent="space-between" alignItems="center" style={{ position: 'relative' }} >
-                <ProgressCircle location={'left'}></ProgressCircle>
-                <div style={{ height: 1, width: '100%', backgroundColor: 'yellow', position: 'absolute'}}></div>
-                <ProgressCircle location={'right'}></ProgressCircle>
-              </Grid>
-              <Grid container direction="row" item xs justifyContent="space-between" alignItems="center" style={{ position: 'relative' }} >
-                <ProgressCircle location={'left'}></ProgressCircle>
-                <div style={{ height: 1, width: '100%', backgroundColor: 'yellow', position: 'absolute'}}></div>
-                <ProgressCircle location={'right'}></ProgressCircle>
-              </Grid>
-              <Grid container direction="row" item xs justifyContent="space-between" alignItems="center" style={{ position: 'relative' }} >
-                <ProgressCircle location={'left'}></ProgressCircle>
-                <div style={{ height: 1, width: '100%', backgroundColor: 'yellow', position: 'absolute'}}></div>
-                <ProgressCircle location={'right'}></ProgressCircle>
-              </Grid>
-              <Grid container direction="row" item xs justifyContent="space-between" alignItems="center" style={{ position: 'relative' }} >
-                <ProgressCircle location={'left'}></ProgressCircle>
-                <div style={{ height: 1, width: '100%', backgroundColor: 'yellow', position: 'absolute'}}></div>
-                <ProgressCircle location={'right'}></ProgressCircle>
-              </Grid>
-              <Grid container direction="row" item xs justifyContent="space-between" alignItems="center" style={{ position: 'relative' }} >
-                <ProgressCircle location={'left'}></ProgressCircle>
-                <div style={{ height: 1, width: '100%', backgroundColor: 'yellow', position: 'absolute'}}></div>
-                <ProgressCircle location={'right'}></ProgressCircle>
-              </Grid>
-              <Grid container direction="row" item xs justifyContent="space-between" alignItems="center" style={{ position: 'relative' }} >
-                <ProgressCircle location={'left'}></ProgressCircle>
-                <div style={{ height: 1, width: '100%', backgroundColor: 'yellow', position: 'absolute'}}></div>
-                <ProgressCircle location={'right'}></ProgressCircle>
+            {/* Progress Bar */}
+            <Grid container item xs spacing={0} >
+              <Grid container item xs className="progress-line">
+                <Grid container item xs className="progress-dots">
+
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
         </div>
         <p>Score: {score}</p>
-        <p>Rank: {rank}</p>
     </div>
   );
 
