@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import generateLetters from '../../../utils/generateLetters';
 import getPrimaryLetter from '../../../utils/getPrimaryLetter';
-import getMaxScore from '../../../utils/getMaxScore';
-import { setLetters, setValidWords, setMaxScore } from '../../../store/actions/gameActions';
+import { setLetters, setValidWords } from '../../../store/actions/gameActions';
 import { startGame } from '../../../store/thunks/gameThunk';
 
 import { Container, Grid } from '@mui/material';
@@ -15,7 +14,7 @@ export default function Game() {
 
   const dispatch = useDispatch();
 
-  const words = useSelector(state => state.words);
+  console.log(useSelector(state => state), '<-- state from game component');
   const letters = useSelector(state => state.letters);
   const primaryLetter = getPrimaryLetter(letters);
 
@@ -23,7 +22,11 @@ export default function Game() {
 
     const lettersArr = Object.keys(letters);
 
-    let words = {};
+    let words = {
+      list: {},
+      maxScore: 0,
+      pangrams: 0,
+    };
 
     fetch('en.json')
         .then((response) => response.json())
@@ -34,14 +37,21 @@ export default function Game() {
             if ( (wordArr.every((letter) => lettersArr.includes(letter))) && (wordArr.includes(primaryLetter)) ) {
               // Determine if pangram (word includes every valid letter)
               if ( lettersArr.every((letter) => wordArr.includes(letter))) {
-                words[word] = {
+                words['list'][word] = {
                   isPangram: true,
                   isFound: false,
                 }
+                words['pangrams'] = words['pangrams'] + 1;
+                words['maxScore'] = words['maxScore'] + word.length + 7;
               } else {
-                words[word] = {
+                words['list'][word] = {
                   isPangram: false,
                   isFound: false,
+                }
+                if ( word.length === 4 ) {
+                  words['maxScore'] = words['maxScore'] + 1;
+                } else {
+                  words['maxScore'] = words['maxScore'] + word.length;
                 }
               }
             }
@@ -49,7 +59,9 @@ export default function Game() {
         })
         .catch((error) => console.log(error));
 
-    return words;
+    console.log(words, '<-- words from generateWords');
+
+    return {words} ;
     
   };
 
@@ -58,15 +70,11 @@ export default function Game() {
   },[dispatch]);
 
   useEffect(() => {
-    dispatch(setValidWords(generateWords(letters)));
+    dispatch(setValidWords(generateWords()));
   },[letters]);
 
-  useEffect(() => {
-    dispatch(setMaxScore(getMaxScore(words)))
-  },[words]);
-
-  const state = useSelector(state => state);
-  console.log(state, 'this is state from Game component');
+  // const state = useSelector(state => state);
+  // console.log(state, 'this is state from Game component');
 
   return (
     <Container maxWidth="md">

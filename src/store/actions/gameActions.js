@@ -13,9 +13,9 @@ export const setLetters = letters => ({
     letters,
 });
 
-export const setValidWords = words => ({
+export const setValidWords = (words) => ({
     type: SET_VALID_WORDS,
-    words,
+    payload: words,
 })
 
 export const shuffleLetters = letters => ({
@@ -39,11 +39,6 @@ export const submitGuess = guess => ({
 
 export const clearGuess = () => ({
     type: CLEAR_GUESS,
-});
-
-export const setMaxScore = maxScore => ({
-    type: SET_MAX_SCORE,
-    maxScore,
 });
 
 export const updateScore = points => ({

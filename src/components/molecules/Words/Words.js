@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 export default function Words() {
 
-  const words = useSelector(state => state.words);
+  const words = useSelector(state => state.words.list);
 
   return (
     <div style={{border: '1px solid yellow', padding: 20}}>

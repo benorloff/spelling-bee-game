@@ -6,7 +6,6 @@ import {
     DELETE_LETTER, 
     SUBMIT_GUESS,
     CLEAR_GUESS,
-    SET_MAX_SCORE,
     UPDATE_SCORE,
 } from "../actions/gameActions";
 
@@ -25,12 +24,13 @@ const ranks = [
 const defaultState = {
     letters: {},
     guess: [],
-    score: {
-        current: 0,
-        max: 0,
-    },
+    score: 0,
     rank: 'Beginner',
-    words: {},
+    words: {
+        list: {},
+        maxScore: 0,
+        pangrams: 0,
+    },
 };
 
 export const gameReducer = (state = defaultState, action) => {
@@ -43,7 +43,7 @@ export const gameReducer = (state = defaultState, action) => {
         case SET_VALID_WORDS:
             return {
                 ...state,
-                words: action.words,
+                ...action.payload
             }
         case SHUFFLE_LETTERS:
             return {
@@ -79,22 +79,11 @@ export const gameReducer = (state = defaultState, action) => {
                 ...state,
                 guess: [],
             };
-        case SET_MAX_SCORE:
-            return {
-                ...state,
-                score: {
-                    ...state.score,
-                    max: action.maxScore,
-                },
-            };
         case UPDATE_SCORE:
             return {
                 ...state,
-                score: {
-                    ...state.score,
-                    current: state.score.current + action.points,
-                }
-            }
+                score: state.score + action.points,
+            };
         default:
             return state;
     }
