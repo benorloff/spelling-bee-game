@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import generateLetters from '../../../utils/generateLetters';
 import getPrimaryLetter from '../../../utils/getPrimaryLetter';
-import { setLetters, setValidWords } from '../../../store/actions/gameActions';
+import getMaxScore from '../../../utils/getMaxScore';
+import { setLetters, setValidWords, setMaxScore } from '../../../store/actions/gameActions';
+import { startGame } from '../../../store/thunks/gameThunk';
 
 import { Container, Grid } from '@mui/material';
 
@@ -51,30 +53,17 @@ export default function Game() {
     
   };
 
-  function getMaxScore() {
-    let maxScore = 0;
-    Object.keys(words).forEach(word => {
-        let currentWordScore = 0;
-        switch (true) {
-        case ( word.length > 4 ):
-            currentWordScore = currentWordScore + word.length;
-            break;
-        case ( words[word].isPangram === true ):
-            currentWordScore = currentWordScore + 7;
-            break;
-        default:
-            currentWordScore++;
-        }
-        maxScore = maxScore + currentWordScore;
-        console.log(`${word} has a score of ${currentWordScore}. Max is now ${maxScore}.`);
-    })
-    return maxScore;
-  }
-
   useEffect(() => {
     dispatch(setLetters(generateLetters()));
-    dispatch(setValidWords(generateWords()));
-  },[dispatch])
+  },[dispatch]);
+
+  useEffect(() => {
+    dispatch(setValidWords(generateWords(letters)));
+  },[letters]);
+
+  useEffect(() => {
+    dispatch(setMaxScore(getMaxScore(words)))
+  },[words]);
 
   const state = useSelector(state => state);
   console.log(state, 'this is state from Game component');

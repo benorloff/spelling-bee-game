@@ -85,7 +85,7 @@ export const gameReducer = (state = defaultState, action) => {
                 score: {
                     ...state.score,
                     max: action.maxScore,
-                }
+                },
             };
         case UPDATE_SCORE:
             return {
