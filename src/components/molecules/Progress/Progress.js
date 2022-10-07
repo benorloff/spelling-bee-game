@@ -10,7 +10,7 @@ export default function Progress() {
   const rank = useSelector(state => state.rank);
   const score = useSelector(state => state.score);
 
-  const progressCircles = [0, 12.5, 25, 37.5, 50, 62.5, 75, 87.5, 100];
+  let dots = [1,2,3,4,5,6,7,8,9];
 
   return (
     <div style={{border: '1px solid yellow', padding: 20}}>
@@ -23,11 +23,18 @@ export default function Progress() {
               <h4>{rank}</h4>
             </Grid>
             {/* Progress Bar */}
-            <Grid container item xs spacing={0} >
-              <Grid container item xs className="progress-line">
-                <Grid container item xs className="progress-dots">
-
+            <Grid container item xs className="progress-bar" >
+              <Grid container item xs className="progress-line" >
+                <Grid container item xs className="progress-dots" >
+                  {dots.map(i => {
+                    return(
+                      <ProgressDot key={i}></ProgressDot>
+                    )
+                  })}
                 </Grid>
+              </Grid>
+              <Grid item xs className="progress-marker" >
+                <span class="progress-value">{score}</span>
               </Grid>
             </Grid>
           </Grid>

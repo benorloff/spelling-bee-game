@@ -36,6 +36,26 @@ code {
   align-items: center;
 }
 
+.progress-marker {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  transition: left 200ms ease;
+  transform: translate(-50%, 0);
+}
+
+.progress-marker .progress-value {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  color: black;
+  font-size: 0.75em;
+  background: yellow;
+}
+
 .progress-dots {
   width: 100%;
   justify-content: space-between;
@@ -51,6 +71,7 @@ code {
   content: '';
   display: block;
   position: absolute;
+  background-color: yellow;
   left: -5px;
   top: -5px;
   width: 10px;
