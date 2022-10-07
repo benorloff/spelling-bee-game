@@ -78,7 +78,7 @@ export default function Game() {
 
   return (
     <Container maxWidth="lg">
-      <h1>This is the Game component.</h1>
+      <h1>Spelling Bee</h1>
       <Grid 
         container 
         spacing={2}

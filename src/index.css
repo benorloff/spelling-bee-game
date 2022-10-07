@@ -20,6 +20,7 @@ code {
 
 .progress-rank {
   align-items: center;
+  text-align: left;
 }
 
 .progress-bar {
