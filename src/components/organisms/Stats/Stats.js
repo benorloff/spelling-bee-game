@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import Progress from '../../molecules/Progress';
-import Words from '../../molecules/Words';
+import WordList from '../../molecules/WordList';
 
 export default function Stats() {
 
@@ -12,7 +12,7 @@ export default function Stats() {
         <div style={{border: '1px solid green', padding: 20}}>
             <p>Stats component</p>
             <Progress props={maxScore} />
-            <Words />
+            <WordList />
         </div>
     )
 }

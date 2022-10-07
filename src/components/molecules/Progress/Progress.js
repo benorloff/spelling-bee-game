@@ -34,12 +34,11 @@ export default function Progress() {
                 </Grid>
               </Grid>
               <Grid item xs className="progress-marker" >
-                <span class="progress-value">{score}</span>
+                <span className="progress-value">{score}</span>
               </Grid>
             </Grid>
           </Grid>
         </div>
-        <p>Score: {score}</p>
     </div>
   );
 

@@ -73,8 +73,9 @@ export const gameReducer = (state = defaultState, action) => {
                 words: {
                     ...state.words,
                     list: {
+                        ...state.words.list,
                         [action.guess]:  {
-                            ...state.words[action.guess],
+                            ...state.words.list[action.guess],
                             isFound: true,
                         }
                     }
