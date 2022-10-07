@@ -16,16 +16,12 @@ export default function SingleButton({action}) {
   const words = useSelector(state => state.words);
 
   const points = (str) => {
-    console.log(str, '<-- str from points')
     switch (true) {
       case ( words['list'][str].isPangram ): 
-        console.log(`${str} is a Pangram. ${str.length} + 7 = ${str.length + 7} points`)
         return str.length + 7;
       case ( str.length > 4 ):
-        console.log(`${str} is more than 4 chars long. ${str.length} points.`)
         return str.length;
       default: 
-        console.log(`${str} is 4 chars long. 1 point.`)
         return 1;
     }
   }

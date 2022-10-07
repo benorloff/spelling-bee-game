@@ -1,5 +1,6 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateRank } from '../../../store/actions/gameActions';
 
 import { Grid } from '@mui/material';
 
@@ -9,6 +10,41 @@ export default function Progress() {
 
   const rank = useSelector(state => state.rank);
   const score = useSelector(state => state.score);
+  const maxScore = useSelector(state => state.words.maxScore);
+
+  const dispatch = useDispatch();
+
+  const [ranks, setRanks] = useState({});
+
+  useEffect(() => {
+    const ranks = {
+      'Beginner': 0,
+      'Good Start': Math.floor(maxScore * 0.2),
+      'Moving Up': Math.floor(maxScore * 0.3),
+      'Good': Math.floor(maxScore * 0.4),
+      'Solid': Math.floor(maxScore * 0.5),
+      'Nice': Math.floor(maxScore * 0.6),
+      'Great': Math.floor(maxScore * 0.7),
+      'Amazing': Math.floor(maxScore * 0.8),
+      'Genius': Math.floor(maxScore * 0.9),
+    }
+    setRanks(ranks);
+  },[maxScore]);
+
+  useEffect(() => {
+    let rank = 'Beginner';
+    for ( let [key,value] of Object.entries(ranks) ) {
+      if ( score !== 0 && score >= value ) {
+        rank = key;
+      } else {
+        break;
+      }
+    }
+    dispatch(updateRank(rank))
+  });
+
+  console.log(ranks, '<-- ranks from  Progress useEffect')
+
 
   let dots = [1,2,3,4,5,6,7,8,9];
 

@@ -9,19 +9,8 @@ import {
     SUBMIT_GUESS,
     CLEAR_GUESS,
     UPDATE_SCORE,
+    UPDATE_RANK,
 } from "../actions/gameActions";
-
-// const ranks = [
-//     'Beginner',
-//     'Good Start',
-//     'Moving Up',
-//     'Good',
-//     'Solid',
-//     'Nice',
-//     'Great',
-//     'Amazing',
-//     'Genius',
-// ];
 
 const defaultState = {
     letters: {},
@@ -56,18 +45,6 @@ export const gameReducer = (state = defaultState, action) => {
                 guess: { $splice: [[action.index,1]] }
             });
         case SUBMIT_GUESS:
-            // return update(state, {
-            //     words: words =>
-            //         update(words || {}, {
-            //             list: list =>
-            //                 update(list || {}, {
-            //                     [action.guess]: actionGuess =>
-            //                         update(action.guess || {}, {
-            //                             isFound: isFound => update(isFound || false, { $set: !isFound })
-            //                         })
-            //                 })
-            //         })
-            // });
             return {
                 ...state,
                 words: {
@@ -91,6 +68,10 @@ export const gameReducer = (state = defaultState, action) => {
                 ...state,
                 score: state.score + action.points,
             };
+        case UPDATE_RANK:
+            return update(state, {
+                rank: { $set: action.rank }
+            });
         default:
             return state;
     }
