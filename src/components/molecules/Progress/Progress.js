@@ -5,6 +5,7 @@ import { updateRank } from '../../../store/actions/gameActions';
 import { Grid } from '@mui/material';
 
 import ProgressDot from '../../atoms/ProgressDot';
+import ProgressMarker from '../../atoms/ProgressMarker/ProgressMarker';
 
 export default function Progress() {
 
@@ -43,9 +44,6 @@ export default function Progress() {
     dispatch(updateRank(rank))
   });
 
-  console.log(ranks, '<-- ranks from  Progress useEffect')
-
-
   let dots = [1,2,3,4,5,6,7,8,9];
 
   return (
@@ -65,9 +63,7 @@ export default function Progress() {
             })}
           </Grid>
         </Grid>
-        <Grid item xs className="progress-marker" >
-          <span className="progress-value">{score}</span>
-        </Grid>
+        <ProgressMarker />
       </Grid>
     </Grid>
   );
