@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteLetter, shuffleLetters, submitGuess, clearGuess } from '../../../store/actions/gameActions';
+import { deleteLetter, shuffleLetters, submitGuess, clearGuess, updateScore } from '../../../store/actions/gameActions';
 
-import useKeyPress from '../../../hooks/useKeyPress';
+// import useKeyPress from '../../../hooks/useKeyPress';
 import randomizeLetters from '../../../utils/randomizeLetters';
 
 import { Button } from '@mui/material';
@@ -14,6 +14,21 @@ export default function SingleButton({action}) {
   const guess = useSelector(state => state.guess);
   const letters = useSelector(state => state.letters);
   const words = useSelector(state => state.words);
+
+  const points = (str) => {
+    console.log(str, '<-- str from points')
+    switch (true) {
+      case ( words['list'][str].isPangram ): 
+        console.log(`${str} is a Pangram. ${str.length} + 7 = ${str.length + 7} points`)
+        return str.length + 7;
+      case ( str.length > 4 ):
+        console.log(`${str} is more than 4 chars long. ${str.length} points.`)
+        return str.length;
+      default: 
+        console.log(`${str} is 4 chars long. 1 point.`)
+        return 1;
+    }
+  }
 
   // let key = action === 'Shuffle' ? 'Space' : action;
   // const handler = action => {
@@ -40,6 +55,7 @@ export default function SingleButton({action}) {
   const handleEnter = () => {
     if ( words['list'][guess.join('')] ) {
       dispatch(submitGuess(guess.join('')))
+      dispatch(updateScore(points(guess.join(''))))
       dispatch(clearGuess())
     } else {
       console.log('Not in word list');

@@ -11,17 +11,17 @@ import {
     UPDATE_SCORE,
 } from "../actions/gameActions";
 
-const ranks = [
-    'Beginner',
-    'Good Start',
-    'Moving Up',
-    'Good',
-    'Solid',
-    'Nice',
-    'Great',
-    'Amazing',
-    'Genius',
-];
+// const ranks = [
+//     'Beginner',
+//     'Good Start',
+//     'Moving Up',
+//     'Good',
+//     'Solid',
+//     'Nice',
+//     'Great',
+//     'Amazing',
+//     'Genius',
+// ];
 
 const defaultState = {
     letters: {},
