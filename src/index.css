@@ -145,7 +145,7 @@ code {
   text-anchor: right;
 }
 
-.hive-cell .primary {
+.hive-cell.primary {
   transform: translate(0,0);
 }
 

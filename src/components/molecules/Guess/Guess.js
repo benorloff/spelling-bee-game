@@ -14,7 +14,7 @@ export default function Guess() {
         <p>Guess</p>
         {guess.map((letter,i) => {
           return (
-            <span key={i}>{letter}</span>
+            <span key={i} style={{ fontSize: 40, textTransform: 'uppercase', fontWeight: 'bold' }}>{letter}</span>
           )
         })}
     </Grid>

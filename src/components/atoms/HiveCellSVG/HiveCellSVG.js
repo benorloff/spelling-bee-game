@@ -1,6 +1,19 @@
 import React from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { addLetter } from '../../../store/actions/gameActions';
+
+import useKeyPress from '../../../hooks/useKeyPress';
 
 export default function HiveCellSVG(props) {
+
+    const dispatch = useDispatch();
+
+    const handleLetterClick = () => {
+        dispatch(addLetter([props.letter]));
+    }
+
+    useKeyPress(props.letter, handleLetterClick);
+
     return(
         <svg 
             height={100}
@@ -11,6 +24,7 @@ export default function HiveCellSVG(props) {
             viewBox="0 0 300 300" 
             shapeRendering="geometricPrecision" 
             textRendering="geometricPrecision"
+            onClick={handleLetterClick}
         >
             <polygon 
                 className="cell-fill"
@@ -23,8 +37,11 @@ export default function HiveCellSVG(props) {
                 className="cell-letter"
                 dx="0" 
                 dy="0" 
-                fontSize="100" 
-                fontWeight="400" 
+                fontFamily="'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                sans-serif"
+                fontSize="80" 
+                fontWeight="800" 
                 transform="translate(125 184.226563)" 
                 strokeWidth="0"
             >
