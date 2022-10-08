@@ -1,12 +1,20 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import { clearSnackbar } from "../../../store/actions/gameActions";
 
 import { Snackbar } from "@mui/material";
 
-export default function Snackbar() {
+export default function GameSnackbar() {
+
+    const dispatch = useDispatch();
 
     const snackbarOpen = useSelector(state => state.snackbar.open);
+    const snackbarMessage = useSelector(state => state.snackbar.message);
 
+    const handleClose = () => {
+        dispatch(clearSnackbar());
+    };
 
     return (
         <Snackbar
@@ -14,9 +22,12 @@ export default function Snackbar() {
                 vertical: 'top',
                 horizontal: 'center',
             }}
-        >
-
-        </Snackbar>
+            open={snackbarOpen}
+            autoHideDuration={2000}
+            onClose={handleClose}
+            aria-describedby='game-snackbar'
+            message={snackbarMessage}
+        />
     )
 
 }
