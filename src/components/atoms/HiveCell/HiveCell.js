@@ -18,8 +18,9 @@ export default function HiveCell({ letter, type }) {
 
   return (
     <Button 
-      variant="outlined"
+      variant="contained"
       onClick={handleLetterClick}
+      className="hive-cell"
     >
       {letter}{ type === 'isPrimary' ? '*' : ''}
     </Button>
