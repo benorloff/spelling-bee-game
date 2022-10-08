@@ -7,6 +7,8 @@ export const SUBMIT_GUESS = 'SUBMIT_GUESS';
 export const CLEAR_GUESS = 'CLEAR_GUESS';
 export const UPDATE_SCORE = 'UPDATE_SCORE';
 export const UPDATE_RANK = 'UPDATE_RANK';
+export const DISPLAY_SNACKBAR = 'DISPLAY_SNACKBAR';
+export const CLEAR_SNACKBAR = 'CLEAR_SNACKBAR';
 
 export const setLetters = letters => ({
     type: SET_LETTERS,
@@ -51,3 +53,12 @@ export const updateRank = rank => ({
     type: UPDATE_RANK,
     rank,
 });
+
+export const displaySnackbar = message => ({
+    type: DISPLAY_SNACKBAR,
+    message,
+});
+
+export const clearSnackbar = () => ({
+    type: CLEAR_SNACKBAR,
+})

@@ -10,6 +10,8 @@ import {
     CLEAR_GUESS,
     UPDATE_SCORE,
     UPDATE_RANK,
+    DISPLAY_SNACKBAR,
+    CLEAR_SNACKBAR,
 } from "../actions/gameActions";
 
 const defaultState = {
@@ -22,6 +24,10 @@ const defaultState = {
         maxScore: 0,
         pangrams: 0,
     },
+    snackbar: {
+        open: false,
+        message: '',
+    }
 };
 
 export const gameReducer = (state = defaultState, action) => {
@@ -71,6 +77,22 @@ export const gameReducer = (state = defaultState, action) => {
         case UPDATE_RANK:
             return update(state, {
                 rank: { $set: action.rank }
+            });
+        case DISPLAY_SNACKBAR:
+            return update(state, {
+                snackbar: snackbar =>
+                    update(snackbar || {}, {
+                        open: { $set: true },
+                        message: { $set: action.message },
+                    })
+            });
+        case CLEAR_SNACKBAR:
+            return update(state, {
+                snackbar: snackbar =>
+                    update(snackbar || {}, {
+                        open: { $set: false },
+                        message: { $set: '' },
+                    })
             });
         default:
             return state;
