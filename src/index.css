@@ -95,46 +95,80 @@ code {
   background-color: white;
 }
 
+.controls-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
 .controls {
+  position: relative;
+  max-height: 100%;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
+  max-width: 315px;
+  padding-bottom: 45px;
+}
+
+.hive-box {
+  width: 100%;
+  justify-content: center;
 }
 
 .hive {
   position: relative;
   width: 100%;
-  padding-bottom: 50%;
+  padding-bottom: 100%;
+  justify-content: center;
+  margin: 25px auto;
 }
 
 .hive-cell {
-  float: left;
-  margin-top: 30px;
-  width: 104px;
-  height: 60px;
-  background-color: #e6e6e6 !important;
-  position: relative;
-  border: 0 !important;
-  border-radius: 0 !important;
-  transform: rotate(30deg);
+  position: absolute;
+  top: calc(100% / 3);
+  left: 30%;
+  width: 40%;
+  height: calc(100% / 3);
 }
 
-.hive-cell::before {
-  content: " ";
-  width: 0; height: 0;
-  border-bottom: 30px solid #e6e6e6;
-  border-left: 52px solid transparent;
-  border-right: 52px solid transparent;
-  position: absolute;
-  top: -30px;
+.hive-cell .cell-fill {
+  cursor: pointer;
+  transition: all 100ms;
 }
 
-.hive-cell::after {
-  content: "";
-  width: 0;
-  position: absolute;
-  bottom: -30px;
-  border-top: 30px solid #e6e6e6;
-  border-left: 52px solid transparent;
-  border-right: 52px solid transparent;
+.hive-cell .cell-letter {
+  pointer-events: none;
+  text-transform: uppercase;
+  text-anchor: right;
+}
+
+.hive-cell .primary {
+  transform: translate(0,0);
+}
+
+.hive-cell.secondary {
+  transform: translate(-75%, -50%);
+}
+
+.hive-cell.secondary:nth-child(2) {
+  transform: translate(0, -100%);
+}
+
+.hive-cell.secondary:nth-child(3) {
+  transform: translate(75%, -50%);
+}
+
+.hive-cell.secondary:nth-child(4) {
+  transform: translate(75%, 50%);
+}
+
+.hive-cell.secondary:nth-child(5) {
+  transform: translate(0%, 100%);
+}
+
+.hive-cell.secondary:nth-child(6) {
+  transform: translate(-75%, 50%);
 }

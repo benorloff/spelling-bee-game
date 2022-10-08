@@ -4,21 +4,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Grid } from '@mui/material';
 
 import HiveCell from '../../atoms/HiveCell/HiveCell';
+import HiveCellSVG from '../../atoms/HiveCellSVG';
 
 export default function Hive() {
 
   const letters = useSelector(state => state.letters);
 
   return (
-    <>
-      <div className='hive'>
+      <Grid item className='hive-box'>
+        <div className='hive'>
           {Object.keys(letters).map((key,i) => {
             return (
-              <HiveCell key={i} letter={key} type={letters[key]}></HiveCell>
+              <HiveCellSVG key={i} letter={key} type={letters[key]} />
             )
           })}
-      </div>
-      <span style={{ color: '#e6e6e6', fontSize: '135px', marginTop: '100px'}}>&#x2B22;</span>
-    </>
+        </div>
+      </Grid>
   );
 }

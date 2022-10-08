@@ -8,11 +8,12 @@ import Buttons from '../../molecules/Buttons';
 
 export default function Play() {
     return (
-        <Grid className='controls'>
-            <p>Play component</p>
-            <Guess></Guess>
-            <Hive></Hive>
-            <Buttons></Buttons>
+        <Grid container className='controls-box'>
+            <Grid container item className='controls'>
+                <Guess></Guess>
+                <Hive></Hive>
+                <Buttons></Buttons>
+            </Grid>
         </Grid>
     )
 }
