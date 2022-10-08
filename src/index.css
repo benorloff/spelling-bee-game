@@ -113,6 +113,36 @@ code {
   padding-bottom: 45px;
 }
 
+.guess {
+  text-transform: uppercase;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+  font-size: 2em;
+  width: 100%;
+  padding-top: 2px;
+}
+
+.guess-content {
+  height: 100%;
+  display: inline-block;
+  min-width: 1px;
+}
+
+.guess-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 1.25em;
+  background: yellow;
+  animation-duration: 1000ms;
+  animation-timing-function: step-end;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+
 .hive-box {
   width: 100%;
   justify-content: center;
@@ -120,7 +150,7 @@ code {
 
 .hive {
   position: relative;
-  width: 100%;
+  width: 95%;
   padding-bottom: 100%;
   justify-content: center;
   margin: 25px auto;
@@ -149,26 +179,26 @@ code {
   transform: translate(0,0);
 }
 
-.hive-cell.secondary {
+.hive-cell.secondary.pos1 {
   transform: translate(-75%, -50%);
 }
 
-.hive-cell.secondary:nth-child(2) {
+.hive-cell.secondary.pos2 {
   transform: translate(0, -100%);
 }
 
-.hive-cell.secondary:nth-child(3) {
+.hive-cell.secondary.pos3 {
   transform: translate(75%, -50%);
 }
 
-.hive-cell.secondary:nth-child(4) {
+.hive-cell.secondary.pos4 {
   transform: translate(75%, 50%);
 }
 
-.hive-cell.secondary:nth-child(5) {
+.hive-cell.secondary.pos5 {
   transform: translate(0%, 100%);
 }
 
-.hive-cell.secondary:nth-child(6) {
+.hive-cell.secondary.pos6 {
   transform: translate(-75%, 50%);
 }

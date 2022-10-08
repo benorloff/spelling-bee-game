@@ -10,13 +10,14 @@ export default function Guess() {
   const guess = useSelector(state => state.guess);
 
   return (
-    <Grid item xs>
-        <p>Guess</p>
-        {guess.map((letter,i) => {
-          return (
-            <span key={i} style={{ fontSize: 40, textTransform: 'uppercase', fontWeight: 'bold' }}>{letter}</span>
-          )
-        })}
+    <Grid item xs className='guess' >
+        <span className='guess-content'>
+          {guess.map((letter,i) => {
+            return (
+              <span>{letter}</span>
+            )
+          })}
+        </span>
     </Grid>
   );
 }

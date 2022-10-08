@@ -17,7 +17,7 @@ export default function HiveCellSVG(props) {
     return(
         <svg 
             height={100}
-            className={`hive-cell ${props.type === 'isPrimary' ? 'primary' : 'secondary'}`}
+            className={`hive-cell ${props.type === 'isPrimary' ? 'primary' : `secondary ${props.position}`}`}
             id="e7Ac29mCInS1" 
             xmlns="http://www.w3.org/2000/svg" 
             xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -29,7 +29,7 @@ export default function HiveCellSVG(props) {
             <polygon 
                 className="cell-fill"
                 points="15.996927,-131.529713 145.901927,-56.529714 145.901927,93.470286 15.996927,168.470287 -113.908073,93.470286 -113.908073,-56.529714 15.996927,-131.529713" 
-                transform="matrix(.866025 0.5-.5 0.866025 145.381398 126.005799)" 
+                transform="matrix(.866025 0.5-.5 0.866025 145.381398 126.005799), scale(1.05)" 
                 fill={ props.type === 'isPrimary' ? 'yellow' : "#e6e6e6" } 
                 strokeWidth="0"
             />
