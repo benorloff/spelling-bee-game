@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 import { Grid } from '@mui/material';
-
-import useKeyPress from '../../../hooks/useKeyPress';
 
 export default function Guess() {
 
@@ -14,7 +12,7 @@ export default function Guess() {
         <span className='guess-content'>
           {guess.map((letter,i) => {
             return (
-              <span>{letter}</span>
+              <span key={i}>{letter}</span>
             )
           })}
         </span>

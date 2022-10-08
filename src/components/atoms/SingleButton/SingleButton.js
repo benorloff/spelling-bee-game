@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteLetter, shuffleLetters, submitGuess, clearGuess, updateScore } from '../../../store/actions/gameActions';
 
-// import useKeyPress from '../../../hooks/useKeyPress';
+import useKeyPress from '../../../hooks/useKeyPress';
 import randomizeLetters from '../../../utils/randomizeLetters';
 
 import { Button } from '@mui/material';
@@ -26,26 +26,12 @@ export default function SingleButton({action}) {
     }
   }
 
-  // let key = action === 'Shuffle' ? 'Space' : action;
-  // const handler = action => {
-  //   switch (action) {
-  //     case ('Delete'): 
-  //       return handleDelete;
-  //     case ('Shuffle'): 
-  //       return handleShuffle;
-  //     case ('Enter'):
-  //       return handleEnter;
-  //   }
-  // };
-
   const handleDelete = () => {
     dispatch(deleteLetter(guess.length - 1));
-    console.log('handle delete HIT')
   };
 
   const handleShuffle = () => {
     dispatch(shuffleLetters(randomizeLetters(letters)));
-    console.log('handle shuffle HIT')
   };
 
   const handleEnter = () => {
@@ -54,18 +40,25 @@ export default function SingleButton({action}) {
       dispatch(updateScore(points(guess.join(''))))
       dispatch(clearGuess())
     } else {
-      console.log('Not in word list');
+      // Display message to user that
+      // guess is not in word list
     }
-    console.log('handle enter HIT')
   };
 
-  // ENABLE KEY PRESSES FOR BUTTONS
-  // useKeyPress(key, handler);
+  useKeyPress('Enter', handleEnter);
+  useKeyPress('Tab', handleShuffle);
+  useKeyPress('Backspace', handleDelete);
 
   return (
     <Button 
       variant="outlined"
-      onClick={action === "Delete" ? handleDelete : action === "Shuffle" ? handleShuffle : handleEnter }
+      onClick={ 
+        action === 'Enter' 
+          ? handleEnter
+          : action === 'Delete'
+            ? handleDelete
+            : handleShuffle
+      }
     >
       { action === "Shuffle" ? <Autorenew /> : action }
     </Button>

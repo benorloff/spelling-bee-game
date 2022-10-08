@@ -20,14 +20,14 @@ export default function Progress() {
   useEffect(() => {
     const ranks = {
       'Beginner': 0,
-      'Good Start': Math.floor(maxScore * 0.2),
-      'Moving Up': Math.floor(maxScore * 0.3),
-      'Good': Math.floor(maxScore * 0.4),
-      'Solid': Math.floor(maxScore * 0.5),
-      'Nice': Math.floor(maxScore * 0.6),
-      'Great': Math.floor(maxScore * 0.7),
-      'Amazing': Math.floor(maxScore * 0.8),
-      'Genius': Math.floor(maxScore * 0.9),
+      'Good Start': Math.floor(maxScore * 0.1),
+      'Moving Up': Math.floor(maxScore * 0.2),
+      'Good': Math.floor(maxScore * 0.3),
+      'Solid': Math.floor(maxScore * 0.4),
+      'Nice': Math.floor(maxScore * 0.5),
+      'Great': Math.floor(maxScore * 0.6),
+      'Amazing': Math.floor(maxScore * 0.7),
+      'Genius': Math.floor(maxScore * 0.8),
     }
     setRanks(ranks);
   },[maxScore]);

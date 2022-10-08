@@ -9,12 +9,12 @@ export default function useKeyPress(key, callback, active = true) {
     };
 
     if (active) {
-      window.addEventListener('keypress', keypress);
+      window.addEventListener('keydown', keypress);
     }
 
     return () => {
       if (active) {
-        window.removeEventListener('keypress', keypress);
+        window.removeEventListener('keydown', keypress);
       }
     };
   }, [key, callback, active]);

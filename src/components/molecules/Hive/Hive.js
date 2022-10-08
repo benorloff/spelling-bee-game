@@ -1,10 +1,9 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { Grid } from '@mui/material';
 
-import HiveCell from '../../atoms/HiveCell/HiveCell';
-import HiveCellSVG from '../../atoms/HiveCellSVG';
+import HiveCell from '../../atoms/HiveCell';
 
 export default function Hive() {
 
@@ -24,7 +23,7 @@ export default function Hive() {
         <div className='hive'>
           {Object.keys(letters).map((key,i) => {
             return (
-              <HiveCellSVG key={i} letter={key} type={letters[key]} position={getCellPosition(letters[key])}/>
+              <HiveCell key={i} letter={key} type={letters[key]} position={getCellPosition(letters[key])}/>
             )
           })}
         </div>
