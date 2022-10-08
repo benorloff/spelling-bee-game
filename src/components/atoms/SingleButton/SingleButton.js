@@ -41,18 +41,18 @@ export default function SingleButton({action}) {
   const handleEnter = () => {
     switch (true) {
       case ( guess.length < 4 ):
-        dispatch(displaySnackbar('Too short'));
+        dispatch(displaySnackbar({ content: 'Too short', severity: 'info'}));
         break;
       case ( guess.includes(primaryLetter) === false ):
-        dispatch(displaySnackbar('Missing center letter'));
+        dispatch(displaySnackbar({ content: 'Missing center letter', severity: 'info'}));
         break;
       case ( Object.hasOwn(words, guess.join('')) ):
         dispatch(submitGuess(guess.join('')));
         dispatch(updateScore(points(guess.join(''))));
-        dispatch(displaySnackbar(`Nice! +${points(guess.join(''))} points.`));
+        dispatch(displaySnackbar({ content: `Nice! +${points(guess.join(''))} points.`, severity: 'success'}));
         break;
       default:
-        dispatch(displaySnackbar('Not in word list'));
+        dispatch(displaySnackbar({ content: 'Not in word list', severity: 'info'}));
     }
     dispatch(clearGuess());
   };

@@ -27,6 +27,7 @@ const defaultState = {
     snackbar: {
         open: false,
         message: '',
+        severity: '',
     }
 };
 
@@ -83,7 +84,8 @@ export const gameReducer = (state = defaultState, action) => {
                 snackbar: snackbar =>
                     update(snackbar || {}, {
                         open: { $set: true },
-                        message: { $set: action.message },
+                        message: { $set: action.message.content },
+                        severity: { $set: action.message.severity },
                     })
             });
         case CLEAR_SNACKBAR:
@@ -92,6 +94,7 @@ export const gameReducer = (state = defaultState, action) => {
                     update(snackbar || {}, {
                         open: { $set: false },
                         message: { $set: '' },
+                        severity: { $set: '' },
                     })
             });
         default:

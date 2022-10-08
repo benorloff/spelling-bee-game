@@ -1,9 +1,9 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { clearSnackbar } from "../../../store/actions/gameActions";
 
-import { Snackbar } from "@mui/material";
+import { Snackbar, Alert } from "@mui/material";
 
 export default function GameSnackbar() {
 
@@ -11,6 +11,7 @@ export default function GameSnackbar() {
 
     const snackbarOpen = useSelector(state => state.snackbar.open);
     const snackbarMessage = useSelector(state => state.snackbar.message);
+    const snackbarSeverity = useSelector(state => state.snackbar.severity);
 
     const handleClose = () => {
         dispatch(clearSnackbar());
@@ -26,8 +27,11 @@ export default function GameSnackbar() {
             autoHideDuration={2000}
             onClose={handleClose}
             aria-describedby='game-snackbar'
-            message={snackbarMessage}
-        />
+        >
+            <Alert onClose={handleClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+                {snackbarMessage}
+            </Alert>
+        </Snackbar>
     )
 
 }
