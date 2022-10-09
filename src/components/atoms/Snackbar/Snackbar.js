@@ -26,9 +26,10 @@ export default function GameSnackbar() {
             open={snackbarOpen}
             autoHideDuration={2000}
             onClose={handleClose}
+            transitionDuration={0}
             aria-describedby='game-snackbar'
         >
-            <Alert onClose={handleClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+            <Alert className="snackbar" onClose={handleClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
                 {snackbarMessage}
             </Alert>
         </Snackbar>

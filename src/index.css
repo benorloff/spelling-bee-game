@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.snackbar {
+  border: 1px solid #e6e6e6;
+}
+
 .progress {
   padding: 6px 12px 6px 0;
   cursor: pointer;

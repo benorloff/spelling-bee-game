@@ -12,12 +12,11 @@ import { Autorenew } from '@mui/icons-material';
 export default function SingleButton({action}) {
 
   const dispatch = useDispatch();
+
   const guess = useSelector(state => state.guess);
   const letters = useSelector(state => state.letters);
   const words = useSelector(state => state.words.list);
   const primaryLetter = getPrimaryLetter(letters);
-
-  console.log(primaryLetter, '<-- primaryLetter from singlebutton')
 
   const points = (str) => {
     switch (true) {
@@ -46,6 +45,9 @@ export default function SingleButton({action}) {
       case ( guess.includes(primaryLetter) === false ):
         dispatch(displaySnackbar({ content: 'Missing center letter', severity: 'info'}));
         break;
+      case ( words[guess.join('')]?.isFound ):
+        dispatch(displaySnackbar({ content: 'Already found', severity: 'info'}));
+        break;
       case ( Object.hasOwn(words, guess.join('')) ):
         dispatch(submitGuess(guess.join('')));
         dispatch(updateScore(points(guess.join(''))));
@@ -53,6 +55,7 @@ export default function SingleButton({action}) {
         break;
       default:
         dispatch(displaySnackbar({ content: 'Not in word list', severity: 'info'}));
+        break;
     }
     dispatch(clearGuess());
   };
