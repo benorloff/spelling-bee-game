@@ -6,7 +6,7 @@ import { Grid, Stack } from '@mui/material';
 export default function Buttons() {
 
   return (
-    <Grid item xs >
+    <Grid item xs sx={{ mt: 4 }}>
         <Stack direction="row" spacing={2} justifyContent="center">
           <SingleButton action="Delete" />
           <SingleButton action="Shuffle" />

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import generateLetters from '../../../utils/generateLetters';
 import getPrimaryLetter from '../../../utils/getPrimaryLetter';
 import { setLetters, setValidWords } from '../../../store/actions/gameActions';
-import { startGame } from '../../../store/thunks/gameThunk';
 
 import { Container, Grid } from '@mui/material';
 
@@ -77,22 +76,18 @@ export default function Game() {
     dispatch(setValidWords(generateWords()));
   },[letters]);
 
-  // const state = useSelector(state => state);
-  // console.log(state, 'this is state from Game component');
-
   return (
     <Container maxWidth="lg">
-      <h1>Spelling Bee</h1>
       <Grid 
         container 
         spacing={2}
         alignItems="center"
       >
-        <Grid item xs={12} md={6} order={{ xs: 2, md: 1}} textAlign='center' >
-          <Play />
-        </Grid>
-        <Grid item xs={12} md={6} order={{ xs: 1, md: 2}} textAlign='center' >
+        <Grid item xs={12} textAlign='center' >
           <Stats />
+        </Grid>
+        <Grid item xs={12} textAlign='center' >
+          <Play />
         </Grid>
       </Grid>
     </Container>

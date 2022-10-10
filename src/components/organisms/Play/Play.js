@@ -8,7 +8,7 @@ import Buttons from '../../molecules/Buttons';
 
 export default function Play() {
     return (
-        <Grid container className='controls-box'>
+        <Grid container className='controls-box' sx={{ mt: 4 }}>
             <Grid container item className='controls'>
                 <Guess></Guess>
                 <Hive></Hive>

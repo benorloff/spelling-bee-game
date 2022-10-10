@@ -5,6 +5,7 @@ import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 
 import Game from '../../pages/Game';
 import Snackbar from '../../atoms/Snackbar';
+import Nav from '../../organisms/Nav/Nav';
 
 const darkTheme = createTheme({
   palette: {
@@ -19,7 +20,8 @@ function App() {
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
         <Snackbar />
-        <Game />
+        <Nav />
+        <Game/>
       </ThemeProvider>
     </Provider>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteLetter, shuffleLetters, submitGuess, clearGuess, updateScore, displaySnackbar, clearSnackbar } from '../../../store/actions/gameActions';
+import { deleteLetter, shuffleLetters, submitGuess, clearGuess, updateScore, displaySnackbar } from '../../../store/actions/gameActions';
 
 import useKeyPress from '../../../hooks/useKeyPress';
 import randomizeLetters from '../../../utils/randomizeLetters';
@@ -51,7 +51,7 @@ export default function SingleButton({action}) {
       case ( Object.hasOwn(words, guess.join('')) ):
         dispatch(submitGuess(guess.join('')));
         dispatch(updateScore(points(guess.join(''))));
-        dispatch(displaySnackbar({ content: `Nice! +${points(guess.join(''))} points.`, severity: 'success'}));
+        successMessage(guess);
         break;
       default:
         dispatch(displaySnackbar({ content: 'Not in word list', severity: 'info'}));
@@ -59,6 +59,31 @@ export default function SingleButton({action}) {
     }
     dispatch(clearGuess());
   };
+
+  const successMessage = (guess) => {
+    switch (true) {
+      case ( words[guess.join('')]?.isPangram ):
+        dispatch(displaySnackbar({ content: `Pangram! +${points(guess.join(''))} points.`, severity: 'success'}));
+        break;
+      case ( guess.length > 8 ):
+        dispatch(displaySnackbar({ content: `Incredible! +${points(guess.join(''))} points.`, severity: 'success'}));
+        break;
+      case ( guess.length > 7 ):
+        dispatch(displaySnackbar({ content: `Superb! +${points(guess.join(''))} points.`, severity: 'success'}));
+        break;
+      case ( guess.length > 6 ):
+        dispatch(displaySnackbar({ content: `Amazing! +${points(guess.join(''))} points.`, severity: 'success'}));
+        break;
+      case ( guess.length > 5 ):
+        dispatch(displaySnackbar({ content: `Awesome! +${points(guess.join(''))} points.`, severity: 'success'}));
+        break;
+      case ( guess.length > 4 ):
+        dispatch(displaySnackbar({ content: `Great! +${points(guess.join(''))} points.`, severity: 'success'}));
+        break;
+      default:
+        dispatch(displaySnackbar({ content: `Nice! +${points(guess.join(''))} points.`, severity: 'success'}));
+    }
+  }
 
   useKeyPress('Enter', handleEnter);
   useKeyPress('Tab', handleShuffle);
