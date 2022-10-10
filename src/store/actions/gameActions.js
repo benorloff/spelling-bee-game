@@ -61,4 +61,4 @@ export const displaySnackbar = message => ({
 
 export const clearSnackbar = () => ({
     type: CLEAR_SNACKBAR,
-})
+});

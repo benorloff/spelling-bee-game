@@ -28,7 +28,7 @@ const defaultState = {
         open: false,
         message: '',
         severity: '',
-    }
+    },
 };
 
 export const gameReducer = (state = defaultState, action) => {
