@@ -91,22 +91,24 @@ export default function Nav({ theme, toggleTheme }) {
                         <Typography variant="h5" component="div" sx={{ flexGrow: 1, ml: 1 }}>
                             Spelling Bee
                         </Typography>
-                        <ThemeSwitch aria-label="Switch Theme" checked={checked} onChange={handleChange} />
-                        <Typography>
-                            {theme === 'dark' ? 'dark' : 'light'}
-                        </Typography>
-                        <Button 
-                            sx={{ mr: 2, textTransform: 'none' }}
+                        <ThemeSwitch 
+                            aria-label="Switch Theme" 
+                            checked={checked} 
+                            onChange={handleChange}
+                            sx={{ mr: 2 }}
+                        />
+                        <Typography 
+                            sx={{ mr: 2, cursor: 'pointer' }}
                             onClick={() => {handleOpen('rankings')}}
                         >
                             Rankings
-                        </Button>
-                        <Button
+                        </Typography>
+                        <Typography
                             onClick={() => {handleOpen('how-to-play')}}
-                            sx={{ textTransform: 'none' }}
+                            sx={{ cursor: 'pointer' }}
                         >
                             How To Play
-                        </Button>
+                        </Typography>
                     </Toolbar>
                 </Container>
             </AppBar>

@@ -99,6 +99,11 @@ export default function SingleButton({action}) {
             ? handleDelete
             : handleShuffle
       }
+      sx={
+        action === 'Shuffle'
+          ? { width: '50px', padding: '0', minWidth: '50px' }
+          : ''
+      }
     >
       { action === "Shuffle" ? <Autorenew /> : action }
     </Button>

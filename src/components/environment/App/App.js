@@ -19,6 +19,24 @@ const lightTheme = createTheme({
   palette: {
     mode: 'light',
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          width: '7em',
+          height: '50px',
+          color: '#000000',
+          border: '1px solid #000000',
+          borderRadius: '50px',
+          textTransform: 'none',
+          ":hover": {
+            border: '1px solid #000000'
+          }
+        },
+        
+      }
+    }
+  }
 });
 
 function App() {
