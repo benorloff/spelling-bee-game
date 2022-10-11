@@ -6,8 +6,9 @@ import HowToPlayModal from "../Modals/HowToPlayModal";
 import GeniusModal from "../Modals/GeniusModal";
 
 import styled from "@emotion/styled";
-import { Container, AppBar, Toolbar, Button, Typography, Switch } from "@mui/material";
-import { Hive } from "@mui/icons-material";
+import { Container, AppBar, Toolbar, Typography, Switch, IconButton, Menu, MenuItem } from "@mui/material";
+
+import { Menu as MenuIcon } from "@mui/icons-material";
 
 export default function Nav({ theme, toggleTheme }) {
 
@@ -19,6 +20,7 @@ export default function Nav({ theme, toggleTheme }) {
     });
     
     const [checked, setChecked] = useState(true);
+    const [anchorEl, setAnchorEl] = useState(null);
 
     const handleOpen = (type) => {
         setModal({
@@ -37,6 +39,14 @@ export default function Nav({ theme, toggleTheme }) {
     const handleChange = (event) => {
         setChecked(event.target.checked);
         toggleTheme();
+    };
+
+    const handleMenuOpen = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleMenuClose = () => {
+        setAnchorEl(null);
     };
 
     useEffect(() => {
@@ -96,8 +106,7 @@ export default function Nav({ theme, toggleTheme }) {
         <>
             <AppBar position="sticky">
                 <Container maxWidth="lg">
-                    <Toolbar>
-                        <Hive></Hive>
+                    <Toolbar disableGutters>
                         <Typography variant="h5" component="div" sx={{ flexGrow: 1, ml: 1 }}>
                             Spelling Bee
                         </Typography>
@@ -107,18 +116,29 @@ export default function Nav({ theme, toggleTheme }) {
                             onChange={handleChange}
                             sx={{ mr: 2 }}
                         />
-                        <Typography 
-                            sx={{ mr: 2, cursor: 'pointer' }}
-                            onClick={() => {handleOpen('rankings')}}
+                        <IconButton
+                            size="large"
+                            aria-label="menu"
+                            aria-controls="nav-menu"
+                            aria-haspopup="true"
+                            onClick={handleMenuOpen}
                         >
-                            Rankings
-                        </Typography>
-                        <Typography
-                            onClick={() => {handleOpen('how-to-play')}}
-                            sx={{ cursor: 'pointer' }}
+                            <MenuIcon />
+                        </IconButton>
+                        <Menu
+                            id="nav-menu"
+                            anchorEl={anchorEl}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'right',
+                            }}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={handleMenuClose}
                         >
-                            How To Play
-                        </Typography>
+                            <MenuItem onClick={() => {handleOpen('rankings')}}>Rankings</MenuItem>
+                            <MenuItem onClick={() => {handleOpen('how-to-play')}}>How To Play</MenuItem>
+                        </Menu>
                     </Toolbar>
                 </Container>
             </AppBar>

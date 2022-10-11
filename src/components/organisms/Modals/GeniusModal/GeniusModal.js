@@ -19,9 +19,7 @@ export default function GeniusModal({ open, handleClose }) {
             }
         });
         setWordsFoundCount(count);
-    },[])
-
-
+    },[words])
 
     return(
         <Dialog

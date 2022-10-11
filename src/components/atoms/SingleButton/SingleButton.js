@@ -77,6 +77,11 @@ export default function SingleButton({action}) {
       case ( guess.length > 5 ):
         dispatch(displaySnackbar({ content: `Awesome! +${points(guess.join(''))} points.`, severity: 'success'}));
         break;
+      // Easter Egg
+      case ( guess.join('') === 'robin' ):
+        dispatch(displaySnackbar({ content: 'You found a wild Robin! +1,000,000 points.', severity: 'success'}));
+        break;
+      // End of Easter Egg
       case ( guess.length > 4 ):
         dispatch(displaySnackbar({ content: `Great! +${points(guess.join(''))} points.`, severity: 'success'}));
         break;

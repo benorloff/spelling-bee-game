@@ -58,12 +58,6 @@ export default function Game() {
         })
         .catch((error) => console.log(error));
 
-    // if ( words.maxScore < 50 ) {
-    //   generateWords();
-    // } else {
-    //   return {words};
-    // }
-
     return {words};
     
   };

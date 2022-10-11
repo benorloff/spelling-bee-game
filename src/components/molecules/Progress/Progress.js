@@ -47,13 +47,13 @@ export default function Progress() {
   let dots = [1,2,3,4,5,6,7,8,9];
 
   return (
-    <Grid container columns={10} className="progress">
+    <Grid container className="progress">
       {/* Progress Rank */}
-      <Grid item xs={2} className="progress-rank" >
+      <Grid item xs={4} className="progress-rank" >
         <h4>{rank}</h4>
       </Grid>
       {/* Progress Bar */}
-      <Grid container item xs className="progress-bar" >
+      <Grid container item xs={8} className="progress-bar" >
         <Grid container item xs className="progress-line" >
           <Grid container item xs className="progress-dots" >
             {dots.map(i => {
