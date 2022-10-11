@@ -4,15 +4,17 @@ import RankingsModal from "../Modals/RankingsModal";
 import HowToPlayModal from "../Modals/HowToPlayModal";
 
 import styled from "@emotion/styled";
-import { Container, AppBar, Toolbar, Button, Typography, FormControlLabel, Switch } from "@mui/material";
+import { Container, AppBar, Toolbar, Button, Typography, Switch } from "@mui/material";
 import { Hive } from "@mui/icons-material";
 
-export default function Nav({ toggleDarkMode }) {
+export default function Nav({ theme, toggleTheme }) {
 
     const [modal, setModal] = useState({
         type: '',
         open: false,
     })
+
+    const [checked, setChecked] = useState(true);
 
     const handleOpen = (type) => {
         setModal({
@@ -27,6 +29,11 @@ export default function Nav({ toggleDarkMode }) {
             open: false,
         })
     };
+
+    const handleChange = (event) => {
+        setChecked(event.target.checked);
+        toggleTheme();
+    }
 
     const ThemeSwitch = styled(Switch)(({ theme }) => ({
         width: 62,
@@ -84,7 +91,10 @@ export default function Nav({ toggleDarkMode }) {
                         <Typography variant="h5" component="div" sx={{ flexGrow: 1, ml: 1 }}>
                             Spelling Bee
                         </Typography>
-                        <FormControlLabel control={<ThemeSwitch aria-label="Switch Theme" checked='dark' onClick={toggleDarkMode} />} />
+                        <ThemeSwitch aria-label="Switch Theme" checked={checked} onChange={handleChange} />
+                        <Typography>
+                            {theme === 'dark' ? 'dark' : 'light'}
+                        </Typography>
                         <Button 
                             sx={{ mr: 2, textTransform: 'none' }}
                             onClick={() => {handleOpen('rankings')}}
