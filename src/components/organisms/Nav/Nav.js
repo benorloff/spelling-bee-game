@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import RankingsModal from "../Modals/RankingsModal";
 import HowToPlayModal from "../Modals/HowToPlayModal";
+import GeniusModal from "../Modals/GeniusModal";
 
 import styled from "@emotion/styled";
 import { Container, AppBar, Toolbar, Button, Typography, Switch } from "@mui/material";
@@ -9,11 +11,13 @@ import { Hive } from "@mui/icons-material";
 
 export default function Nav({ theme, toggleTheme }) {
 
+    const rank = useSelector(state => state.rank);
+
     const [modal, setModal] = useState({
         type: '',
         open: false,
-    })
-
+    });
+    
     const [checked, setChecked] = useState(true);
 
     const handleOpen = (type) => {
@@ -33,7 +37,13 @@ export default function Nav({ theme, toggleTheme }) {
     const handleChange = (event) => {
         setChecked(event.target.checked);
         toggleTheme();
-    }
+    };
+
+    useEffect(() => {
+        if ( rank === 'Genius' ) {
+            handleOpen('genius')
+        }
+    },[rank])
 
     const ThemeSwitch = styled(Switch)(({ theme }) => ({
         width: 62,
@@ -117,6 +127,9 @@ export default function Nav({ theme, toggleTheme }) {
             }
             { ( modal.open && modal.type === 'how-to-play' ) && 
                 <HowToPlayModal open={modal.open} handleClose={handleClose} />
+            }
+            { ( modal.open && modal.type === 'genius' ) &&
+                <GeniusModal open={modal.open} handleClose={handleClose} />
             }
         </>
     )
