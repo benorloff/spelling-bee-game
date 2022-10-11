@@ -13,6 +13,24 @@ const darkTheme = createTheme({
   palette: {
     mode: 'dark',
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          width: '7em',
+          height: '50px',
+          color: '#e6e6e6',
+          border: '1px solid #e6e6e6',
+          borderRadius: '50px',
+          textTransform: 'none',
+          ":hover": {
+            border: '1px solid #e6e6e6',
+            backgroundColor: '#1e1e1e',
+          }
+        }
+      }
+    }
+  }
 });
 
 const lightTheme = createTheme({
@@ -30,7 +48,8 @@ const lightTheme = createTheme({
           borderRadius: '50px',
           textTransform: 'none',
           ":hover": {
-            border: '1px solid #000000'
+            border: '1px solid #000000',
+            backgroundColor: '#e6e6e6',
           }
         },
         
