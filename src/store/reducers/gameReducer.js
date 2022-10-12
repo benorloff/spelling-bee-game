@@ -16,6 +16,7 @@ import {
 
 const defaultState = {
     letters: {},
+    order: [1,2,3,4,5,6],
     guess: [],
     score: 0,
     rank: 'Beginner',
@@ -41,7 +42,7 @@ export const gameReducer = (state = defaultState, action) => {
             return update(state, { $merge: action.payload })
         case SHUFFLE_LETTERS:
             return update(state, {
-                letters: { $set: action.letters },
+                order: { $set: action.order },
             });
         case ADD_LETTER:
             return update(state, {

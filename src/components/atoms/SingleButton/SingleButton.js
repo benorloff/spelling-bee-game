@@ -5,6 +5,7 @@ import { deleteLetter, shuffleLetters, submitGuess, clearGuess, updateScore, dis
 import useKeyPress from '../../../hooks/useKeyPress';
 import randomizeLetters from '../../../utils/randomizeLetters';
 import getPrimaryLetter from '../../../utils/getPrimaryLetter';
+import useLetterShuffle from '../../../hooks/useLetterShuffle';
 
 import { Button } from '@mui/material';
 import { Autorenew } from '@mui/icons-material';
@@ -12,6 +13,7 @@ import { Autorenew } from '@mui/icons-material';
 export default function SingleButton({action}) {
 
   const dispatch = useDispatch();
+  const order = useLetterShuffle();
 
   const guess = useSelector(state => state.guess);
   const letters = useSelector(state => state.letters);
@@ -34,7 +36,7 @@ export default function SingleButton({action}) {
   };
 
   const handleShuffle = () => {
-    dispatch(shuffleLetters(randomizeLetters(letters)));
+    dispatch(shuffleLetters(order));
   };
 
   const handleEnter = () => {

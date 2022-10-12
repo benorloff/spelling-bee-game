@@ -20,9 +20,9 @@ export const setValidWords = (words) => ({
     payload: words,
 })
 
-export const shuffleLetters = letters => ({
+export const shuffleLetters = order => ({
     type: SHUFFLE_LETTERS,
-    letters,
+    order,
 });
 
 export const addLetter = letter => ({
