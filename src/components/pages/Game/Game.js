@@ -66,7 +66,7 @@ export default function Game() {
   },[dispatch]);
 
   useEffect(() => {
-    dispatch(setValidWords(generateWords()));
+    dispatch(setValidWords(generateWords(letters)));
   },[letters]);
 
   return (
