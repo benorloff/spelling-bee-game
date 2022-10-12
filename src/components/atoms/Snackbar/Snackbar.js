@@ -17,22 +17,24 @@ export default function GameSnackbar() {
         dispatch(clearSnackbar());
     };
 
-    return (
-        <Snackbar
-            anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
-            }}
-            open={snackbarOpen}
-            autoHideDuration={2000}
-            onClose={handleClose}
-            transitionDuration={0}
-            aria-describedby='game-snackbar'
-        >
-            <Alert className="snackbar" onClose={handleClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
-                {snackbarMessage}
-            </Alert>
-        </Snackbar>
-    )
+    if (snackbarOpen) {
+        return (
+            <Snackbar
+                anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'center',
+                }}
+                open={snackbarOpen}
+                autoHideDuration={2000}
+                onClose={handleClose}
+                transitionDuration={0}
+                aria-describedby='game-snackbar'
+            >
+                <Alert className="snackbar" onClose={handleClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+                    {snackbarMessage}
+                </Alert>
+            </Snackbar>
+        )
+    }
 
 }

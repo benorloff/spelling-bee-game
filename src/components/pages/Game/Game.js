@@ -13,7 +13,6 @@ export default function Game() {
 
   const dispatch = useDispatch();
 
-  console.log(useSelector(state => state), '<-- state from game component');
   const letters = useSelector(state => state.letters);
   const primaryLetter = getPrimaryLetter(letters);
 
