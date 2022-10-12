@@ -14,33 +14,30 @@ export default function Hive() {
   const [secondaryLetters, setSecondaryLetters] = useState([]);
 
   useEffect(() => {
-    let pLet = '';
-    let sLets = [];
+     
+    let currLetters = {
+      primary: '',
+      secondary: [],
+    }
+
+    let orderedSecondaryLetters = [];
   
     Object.keys(letters).forEach((key,i) => {
       if ( letters[key] === 'isPrimary' ) {
-        pLet = key;
+        currLetters.primary = key;
       } else {
-        sLets.push(key);
+        currLetters.secondary.push(key);
       }
     })
   
-    setPrimaryLetter(pLet);
-    setSecondaryLetters(sLets);
-  },[letters])
+    order.forEach(num => {
+      orderedSecondaryLetters.push(currLetters.secondary[num-1])
+    })
 
-  useEffect(() => {
-    let sLets = [];
-    for ( let num of order ) {
-      sLets.push(secondaryLetters[num]);
-    }
-    setSecondaryLetters(sLets);
-  },[order])
+    setPrimaryLetter(currLetters.primary);
+    setSecondaryLetters(orderedSecondaryLetters);
 
-  console.log(order, '<-- order from Hive')
-  console.log(primaryLetter, '<-- primaryLetter from Hive');
-  console.log(secondaryLetters, '<-- secondaryLetters from Hive');
-
+  },[letters,order])
 
   return (
       <Grid item className='hive-box'>
