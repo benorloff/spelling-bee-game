@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import store from '../../../store/store';
 import { useDarkMode } from '../../../hooks/useDarkMode';
+import letterCombos from '../../../utils/letterCombos';
 
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 
