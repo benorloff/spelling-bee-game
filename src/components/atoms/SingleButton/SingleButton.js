@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteLetter, shuffleLetters, submitGuess, clearGuess, updateScore, displaySnackbar } from '../../../store/actions/gameActions';
 
 import useKeyPress from '../../../hooks/useKeyPress';
-import randomizeLetters from '../../../utils/randomizeLetters';
 import getPrimaryLetter from '../../../utils/getPrimaryLetter';
 import useLetterShuffle from '../../../hooks/useLetterShuffle';
 
